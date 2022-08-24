@@ -1,0 +1,13 @@
+<div class="container mt-4">
+  <div fxLayout="row" fxLayoutAlign="center center" >
+    <nz-tabset nzType="card">
+      <nz-tab [nzTitle]="'Ondone task'">
+        <nz-alert nzType="error" class="my-2"  [nzMessage]="todo.title" *ngFor="let todo of OnDoneTask$|async"></nz-alert>
+      </nz-tab>
+      <nz-tab [nzTitle]="'Done task'">
+        <nz-alert nzType="success" class="my-2" [nzMessage]="todo.title" *ngFor="let todo of DoneTask$|async"></nz-alert>
+      </nz-tab>
+
+    </nz-tabset>
+  </div>
+</div>

@@ -1,0 +1,35 @@
+<div class="mt-4" fxLayout="row" fxLayoutAlign="space-around" fxLayoutGap="5px" >
+  <div fxLayout="column" fxLayoutAlign="none" class="container" >
+    <h3 nz-typography class="text-center">Select location</h3>
+    <form nz-form [formGroup]="weatherSearchForm"
+          (ngSubmit)="sendToAPIXU(weatherSearchForm.value)">
+      <nz-form-item>
+        <nz-form-control>
+          <input  nz-input formControlName="location"  id="loc">
+        </nz-form-control>
+      </nz-form-item >
+      <nz-form-control>
+        <div fxLayoutAlign="center" >
+          <button nz-button nzType="primary">Search...</button>
+        </div>
+      </nz-form-control>
+    </form>
+  </div>
+
+    <div fxLayout="column" fxLayoutAlign="center none" class="container">
+
+
+      <nz-card [nzBordered]="true" nzTitle="weather forcast" style="height: 300px" class="text-center">
+        <div *ngFor="let weather of weatherData">
+          <p><b>city: </b>{{weather.address}}</p>
+          <p><b>date: </b>{{weather.days[0].datetime}}</p>
+          <p><b style="color: blue">mintemp: </b>{{weather.days[0].tempmin}}</p>
+          <p><b style="color: red">maxtemp: </b>{{weather.days[0].tempmax}}</p>
+          <p><b>sunset: </b>{{weather.days[0].sunset}}</p>
+          <p><b>time: </b>{{weather.days[0].hours[0].datetime}}</p>
+
+        </div>
+      </nz-card>
+    </div>
+</div>
+

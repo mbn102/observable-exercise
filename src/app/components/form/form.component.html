@@ -1,0 +1,53 @@
+<div class="container">
+  <form [formGroup]="inputForm" (ngSubmit)="onSubmit()">
+    <div formGroupName="info">
+      <div class="mb-3">
+        <label for="exampleInputUser" class="form-label">User name</label>
+        <input
+          type="text" formControlName="username" class="form-control" id="exampleInputUser">
+        <span class=" alert-danger"
+              *ngIf="!inputForm.get('info.username').valid && inputForm.get('info.username').touched">
+            plz enter username</span>
+        <span class=" alert-danger"
+              *ngIf="inputForm.get('info.username').errors['usernameIsBanned']">
+            user name is banned</span>
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Email address</label>
+        <input formControlName="email" type="email" class="form-control" id="exampleInputEmail1">
+        <span class=" alert-danger" *ngIf="!inputForm.get('info.email').valid && inputForm.get('info.email').touched">
+            plz enter email</span>
+        <span class=" alert-danger" *ngIf="
+           inputForm.get('info.email').errors['isBannedEmail']">
+            this email is banned</span>
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Password</label>
+        <input formControlName="password" type="password" class="form-control" id="exampleInputPassword1">
+        <span class="alert-danger"
+              *ngIf="!inputForm.get('info.password').valid && inputForm.get('info.password').touched">
+            plz enter password</span>
+      </div>
+    </div>
+
+    <div class="mb-3 radio" *ngFor="let gender of genders">
+      <label>
+        <input formControlName="gender" type="radio" [value]="gender">{{gender}}
+      </label>
+    </div>
+    <br>
+    <div [formArrayName]="'colors'">
+      <h5>Enter Colors</h5>
+      <button type="button" class="btn btn-outline-info btn-sm" (click)="onAddColor()">Add color</button>
+      <div class="input-group" *ngFor="let color of colors.controls;let i=index ">
+        <input type="text" class="form-control my-1" [formControlName]="i">
+      </div>
+    </div>
+    <!--    -->
+
+    <button type="submit" class="btn btn-primary mt-4" >Submit</button>
+    <br>
+
+  </form>
+  <hr>
+</div>

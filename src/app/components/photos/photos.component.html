@@ -1,0 +1,15 @@
+<div class="container mt-4 text-center">
+  <div fxLayout="row layout-wrap" fxLayoutGap="10px" fxLayoutAlign="space-around center" >
+    <div *ngFor="let photo of Photo10$|async"  class="mb-3" >
+        <nz-card nzHoverable style="width:240px;border-radius: 5px" [nzCover]="coverTemplate">
+          <nz-card-meta [nzTitle]="'tittle: '+photo.title" [nzDescription]="'id: '+photo.id"></nz-card-meta>
+        </nz-card>
+        <ng-template #coverTemplate>
+          <img alt="example" [src]="photo.url" />
+        </ng-template>
+    </div>
+  </div>
+  <div fxLayout="row" fxLayoutAlign="space-around center" >
+  <nz-pagination [nzPageIndex]="1" [nzTotal]="50" class="mb-3"></nz-pagination>
+  </div>
+</div>
